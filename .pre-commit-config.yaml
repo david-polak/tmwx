@@ -1,0 +1,25 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.3.0
+  hooks:
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+  - id: check-byte-order-marker
+  - id: check-symlinks
+  - id: mixed-line-ending
+
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.4.0
+  hooks:
+  - id: pretty-format-rust
+    args: [--autofix]
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, '2']
+
+- repo: https://github.com/doublify/pre-commit-rust
+  rev: master
+  hooks:
+  - id: fmt
+  - id: cargo-check
+    #  - id: clippy
