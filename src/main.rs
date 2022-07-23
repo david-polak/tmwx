@@ -4,6 +4,15 @@ use reqwest::blocking::Client;
 use reqwest::header::USER_AGENT;
 
 use preferences::{AppInfo, Preferences, PreferencesMap};
+use utils::get_epoch;
+
+use cache::Cache;
+
+mod cache;
+mod utils;
+
+// use cache;
+//
 
 const APP_INFO: AppInfo = AppInfo {
     name: "tmwx",
@@ -31,8 +40,10 @@ struct Cli {
 
 fn main() {
     let args = Cli::parse();
+    let cache = Cache::new();
 
-    println!("{}", args.icao);
+    // println!("{}", args.icao);
+    // println!("{}", get_epoch());
 
     // let client = reqwest::blocking::Client::new();
     // let res = client.get("https://api.met.no/weatherapi/tafmetar/1.0/taf?extended=false&icao=LKPR")
@@ -53,11 +64,10 @@ fn main() {
 
 // curl --user-agent "tmwx/dev github.com/david-polak/tmwx" -X GET --header 'Accept: text/plain' 'https://api.met.no/weatherapi/tafmetar/1.0/metar?extended=false&icao=LKPR'
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
-}
+// #[cfg(test)]
+// mod tests {
+//     #[test]
+//     fn test_epoch() {
+//         println!("{}", get_epoch());
+//     }
+// }
