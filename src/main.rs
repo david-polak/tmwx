@@ -1,23 +1,21 @@
+use std::{
+    collections::HashMap,
+    path::{Path, PathBuf},
+};
+
 use clap::Parser;
 use reqwest;
 use reqwest::blocking::Client;
 use reqwest::header::USER_AGENT;
 
-use preferences::{AppInfo, Preferences, PreferencesMap};
 use utils::get_epoch;
 
-use cache::Cache;
+use cache::CacheRecord;
 
 mod cache;
 mod utils;
 
-// use cache;
-//
-
-const APP_INFO: AppInfo = AppInfo {
-    name: "tmwx",
-    author: "David Polák",
-};
+extern crate directories;
 
 /*
  * CLI
@@ -40,7 +38,25 @@ struct Cli {
 
 fn main() {
     let args = Cli::parse();
-    let cache = Cache::new();
+
+    // let cache = Cache::new();
+    //
+    // let taf_cache: HashMap<String, CacheRecord> = HashMap::new();
+    // let mut taf_cache: PreferencesMap<CacheRecord> = PreferencesMap::new();
+    // taf_cache.save(&APP_INFO, "taf_cache");
+
+    //     metar: HashMap<String, CacheRecord>,
+    // }
+    //
+    // impl Cache {
+    //     // let taf = HashMap::new();
+    //
+    //     pub fn new() -> Self {
+    //         Self {
+    //             taf: HashMap::new(),
+    //             metar: HashMap::new(),
+    //         }
+    // let mut faves: PreferencesMap<String> = PreferencesMap::new();
 
     // println!("{}", args.icao);
     // println!("{}", get_epoch());
